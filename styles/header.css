@@ -1,0 +1,252 @@
+.header {
+  height: 55px;
+
+  display: flex;
+  flex-direction: row;
+  /*Evenly spaces our left-section, middle-section,
+    and right-section.*/
+  justify-content: space-between;
+
+  /*Make the header remain in the same place
+    while scrolling up and down the page.*/
+  position: fixed;
+
+  /*The header should stick to the top of the page.*/
+  top: 0;
+
+  /*The header should be zero pixels from
+    the left and right edges of the page.*/
+  left: 0;
+  right: 0;
+
+  /*Since the z-index property for the header is set
+    to 100, it will appear on top of the thumbnails
+    which have a z-index of zero by default.*/
+  z-index: 100;
+
+  background-color: rgb(255, 255, 255);
+
+  /*The following three lines only
+    apply to the bottom border.*/
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(228, 228, 228);
+}
+
+.left-section {
+  /* background-color: lightblue; */
+  /*Commenting out the width will make the left
+    section stretch to contain all of its content.*/
+  /* width: 150px; */
+  display: flex;
+  /*The following line controls vertical alignment,
+    but it will only have an effect if it is inside
+    of a flexbox. This is because flexbox only affects
+    elements that are one level underneath it. It is
+    sometimes valid to put a flexbox inside of another.*/
+  align-items: center;
+}
+
+.hamburger-menu {
+  /*Controls the height of the hamburger menu icon.*/
+  height: 24px;
+  margin-left: 24px;
+  margin-right: 20px;
+}
+
+.youtube-logo {
+  height: 20px;
+}
+
+.middle-section {
+  /* background-color: lightpink; */
+  /*Since the middle section should stretch as the
+    browser is expanded, add "flex: 1;" as a property.*/
+  flex: 1;
+  margin-left: 70px;
+  margin-right: 35px;
+  /*An element can be less than 300 pixels, but not
+    more than that as the browser is expanded.*/
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar {
+  /* display: block; */
+  /*Make the search bar occupy the remaining space.*/
+  flex: 1;
+  height: 36px;
+  padding-left: 10px;
+  font-size: 16px;
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 2px;
+  /*"inset" puts the shadow on the inside of the
+    element.
+    Move the shadow one pixel to the right, two pixels
+    to the bottom. The blur will be three pixels in size
+    and the shadow colour will be rgba(0, 0, 0, 0.05)
+    where 0.05 makes the black colour transparent.*/
+  box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.05);
+
+  /*<input> elements have a default width which prevents
+    them from being shrunk completely when the browser is
+    made smaller. The following line removes this.*/
+  width: 0;
+}
+
+.search-bar::placeholder {
+  font-size: 16px;
+}
+
+.search-button {
+  height: 40px;
+  width: 66px;
+  background-color: rgb(240, 240, 240);
+  border: 1px solid rgb(192, 192, 192);
+  /*Pull the element one pixel to the left.*/
+  margin-left: -1px;
+  margin-right: 10px;
+
+  position: relative;
+}
+
+.search-button,
+.voice-search-button,
+.upload-icon-container,
+.youtube-apps-icon-container,
+.notifications-icon-container {
+  display: flex;
+  /*The justify-content property horizontally
+    positions elements because flexboxes have
+    a flex direction set to row.*/
+  justify-content: center;
+  /*align-items positions elements vertically
+    when the flex direction of a flex box is
+    set to "row".*/
+  align-items: center;
+  position: relative;
+}
+
+/*The tooltip class is being targeted only
+  when it is inside an element targeted by
+  the search-button class.*/
+.search-button .tooltip,
+.voice-search-button .tooltip,
+.upload-icon-container .tooltip,
+.youtube-apps-icon-container .tooltip,
+.notifications-icon-container .tooltip {
+  position: absolute;
+  background-color: gray;
+  color: rgb(255, 255, 255);
+
+  /*padding: top-bottom left-right*/
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  bottom: -30px;
+  /*The opacity property determines how
+    see through the element will be.*/
+  opacity: 0;
+  /*Opacity will be transitioned and
+    it will take 0.15 seconds.*/
+  transition: opacity 0.15s;
+  /*To disable the hover on the tooltip, use
+    a CSS property called pointer-events.
+    
+    The tooltip is the text that appears when
+    the user hovers over a button.*/
+  pointer-events: none;
+  /*The white-space property specifies how
+    white-space inside an element is handled.
+  
+    Setting "nowrap" to the white-space attribute
+    prevents text from wrapping around the next line.
+
+    The text continues on the same line until a <br>
+    tag is encountered.*/
+  white-space: nowrap;
+}
+
+.search-button:hover .tooltip,
+.voice-search-button:hover .tooltip,
+.upload-icon-container:hover .tooltip,
+.youtube-apps-icon-container:hover .tooltip,
+.notifications-icon-container:hover .tooltip {
+  /*tooltip will be targeted only when the element
+    targeted by search-button is hovered over.*/
+  opacity: 1;
+}
+
+.search-icon {
+  height: 25px;
+}
+
+.voice-search-button {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(248, 248, 248);
+}
+
+.voice-search-icon {
+  height: 24px;
+}
+
+.right-section {
+  /* background-color: lightblue; */
+  /*If a section should not stretch as the browser
+    expands, give it a fixed width. Reducing the
+    width positions elements closer to each other
+    in this case because the "justify-content"
+    property is set to "space-between".*/
+  width: 180px;
+  margin-right: 20px;
+  /*The "display" property must be set to "flex"
+    in order for the "vertical-align" property to
+    take effect.*/
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  /*Maintains the width of the <div>
+    when the browser is made smaller.*/
+  flex-shrink: 0;
+}
+
+.upload-icon {
+  height: 24px;
+}
+
+.youtube-apps-icon {
+  height: 24px;
+}
+
+.notifications-icon {
+  height: 24px;
+}
+
+.notifications-icon-container {
+  position: relative;
+}
+
+.notifications-count {
+  position: absolute;
+  /*Use negative values to position an element beyond
+    the top edge of the container. In this case, five
+    pixels beyond the top edge of the div element.*/
+  top: -2px;
+  right: -5px;
+  background-color: rgb(200, 0, 0);
+  color: rgb(255, 255, 255);
+  font-size: 11px;
+  /*padding: top-bottom left-right*/
+  padding: 2px 5px;
+  border-radius: 10px;
+}
+
+.current-user-picture {
+  height: 32px;
+  border-radius: 16px;
+}

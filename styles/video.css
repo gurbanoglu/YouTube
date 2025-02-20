@@ -1,0 +1,242 @@
+.thumbnail {
+  /*If a value is set for only one of the two dimensions
+    the aspect ratio of the image will be maintained. In
+    other words, the image will keep its original shape.
+
+    To make the image occupy the entire width of the
+    column, rather than assigning pixels to the width,
+    set the width to 100%.*/
+  width: 100%;
+  /* width: 300px; */
+  /* height: 300px; */
+  /*The "object-fit" property determines what happens
+      if the values set for the "width" and "height"
+      properties don't match the original aspect ratio
+      of the image.
+      cover - occupy the dimensions with the same aspect ratio
+      contain - the entire image will shrink until it is contained
+                within the height and width dimensions*/
+  /* object-fit: contain; */
+  /*To view the bottom of the image.*/
+  /* object-position: bottom;
+        border-width: 2px;
+        border-style: solid;
+        border-color: red; */
+
+  /*If the image element is made into a block element, it will
+      take up the entire line which will push the paragraph
+      element to next line below it.
+      
+    Setting block to "display" is no longer
+    necessary because width was set to 100%.*/
+  /* display: block; */
+}
+
+.video-title {
+  /*Setting a width that is too large will cause the text to
+    overflow inside a <div> with other elements beside it.*/
+  /* width: 300px; */
+
+  /*Paragraph elements by default have margin on the top and
+    bottom.*/
+  margin-top: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+.video-preview {
+  /*The following was commented out after
+    setting "width" to 100% in the thumbnail
+    class.*/
+  /* width: 300px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 15px; */
+}
+
+.video-info-grid {
+  /*Set the "display" property to grid, and
+    then set how many columns the grid will
+    have.*/
+  display: grid;
+  grid-template-columns: 50px 1fr;
+}
+
+/*If two inline-block <div> elements do not appear beside
+  to each other, it could be because each <div> has a
+  default width of 100%. Decrease the width, so that the
+  elements appear beside each other.*/
+.channel-picture {
+  /*The following three lines were commented out
+    because they are not needed when implementing
+    CSS grid.*/
+  /* display: inline-block;
+  width: 50px;
+  vertical-align: top; */
+  /*The background-color was added for the sole
+    purpose of showing the layout of the page.*/
+  /* background-color: gray; */
+}
+
+.video-info {
+  /*The following two lines were commented out
+    because they are not needed when implementing
+    CSS grid.*/
+  /* display: inline-block;
+  width: 245px; */
+  /*The background-color was added for the sole
+    purpose of showing the layout of the page.*/
+  /* background-color: gray; */
+}
+
+/*Images will overflow in a <div> because by default they
+  keep their original dimensions. To fix this, resize the
+  image, so that it fits. Setting the width of an image
+  to 100% will make it occupy the entire space of its
+  container.*/
+.profile-picture {
+  width: 36px;
+  border-radius: 50px;
+}
+
+.thumbnail-row {
+  margin-bottom: 8px;
+  position: relative;
+}
+
+/*The "video-author" and "video-stats" classes
+  both have the same style definitions.*/
+.video-author,
+.video-stats {
+  font-size: 12px;
+  color: rgb(96, 96, 96);
+}
+
+/*The "video-author" class can still be targeted
+  individually.*/
+.video-author {
+  margin-bottom: 4px;
+}
+
+.video-grid {
+  /*To implement a CSS grid:
+    1. Set "display" to grid.
+    2. Set how many columns are needed.*/
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 40px;
+}
+
+/*Inheritance is the passing down of properties
+  from outer to inner elements.
+
+  Inheritance applies to text properties:
+  text-decoration, underline, color, font-weight
+
+  It doesn't apply to other properties:
+  border, padding, margin*/
+
+/*To build a responsive design, write media queries.
+  The CSS in the following class will only activate
+  if the screen's width is seven hundred pixels or
+  less.*/
+@media (max-width: 750px) {
+  .video-grid {
+    /*While the screen size is zero to seven hundred
+      pixels, there will only be two columns.*/
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/*From 751 to 999 pixels.*/
+@media (min-width: 751px) and (max-width: 999px) {
+  .video-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/*From 1000 pixels and up.*/
+@media (min-width: 1000px) {
+  .video-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .video-title {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .video-author,
+  .video-stats {
+    font-size: 14px;
+  }
+}
+
+.video-time {
+  font-size: 12px;
+  font-weight: 500;
+  /*padding: one value for all four sides*/
+  padding: 4px;
+  border-radius: 2px;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  position: absolute;
+  bottom: 8px;
+  right: 5px;
+}
+
+.video-title-link {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.profile-picture-container {
+  position: relative;
+}
+
+.channel-tooltip {
+  background-color: rgb(255, 255, 255);
+  width: 200px;
+  padding: 12px;
+  /*box-shadow: horizontal position, vertical position,
+                amount of blurriness, colour of the shadow*/
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  position: absolute;
+  top: 55px;
+  z-index: 300;
+
+  opacity: 0;
+  pointer-events: none;
+
+  display: flex;
+  align-items: center;
+  transition: opacity 0.15s;
+}
+
+.profile-picture-container:hover .channel-tooltip {
+  opacity: 1;
+}
+
+.channel-tooltip-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  margin-right: 8px;
+}
+
+.channel-tooltip-name {
+  font-family: Roboto, Arial;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.channel-tooltip-stats {
+  font-family: Roboto, Arial;
+  color: rgb(96, 96, 96);
+  font-size: 14px;
+}

@@ -1,0 +1,91 @@
+@media (max-width: 1200px) {
+  .sidebar {
+    /*Setting the position property to "fixed"
+    forces it to remain in the same position
+    while the page is being scrolled up and
+    down.*/
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 55px;
+    background-color: rgb(255, 255, 255);
+    width: 72px;
+    /*The z-index property was set to 200,
+    so that it sits on top of the header.*/
+    z-index: 200;
+    padding-top: 5px;
+  }
+
+  /*The best way to center something vertically
+  in CSS is to use a flexbox.*/
+  .sidebar-link {
+    height: 74px;
+    display: flex;
+    /*The justify-content property vertically
+    positions elements if the flex direction
+    is set to "column".*/
+    justify-content: center;
+    /*The align-items property horizontally
+    positions elements if flex-directon is
+    set to "column".*/
+    align-items: center;
+    /*Setting "column" to flex-direction causes
+    the elements to be displayed vertically.
+    
+    This makes the text "Home" appear below
+    the Home icon.
+    
+    By default, flexboxes have row as the setting
+    for the flex-direction property.*/
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .sidebar-link:hover {
+    background-color: rgb(235, 235, 235);
+  }
+
+  /*The images inside the element targeted
+  by sidebar-link are being targeted.*/
+  .sidebar-link img {
+    height: 24px;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-link div {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 1200.1px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 55px;
+    background-color: white;
+    width: 240px;
+    z-index: 200;
+    padding-top: 13px;
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 24px;
+  }
+
+  .sidebar-link:hover {
+    background-color: rgb(235, 235, 235);
+  }
+
+  .sidebar-link img {
+    height: 24px;
+    margin-right: 24px;
+  }
+
+  .sidebar-link div {
+    font-size: 14px;
+  }
+}
